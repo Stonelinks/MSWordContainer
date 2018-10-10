@@ -1,0 +1,57 @@
+{
+  "name": "mswordcontainer",
+  "description": "A React Microsoft Word Container",
+  "version": "0.0.1",
+  "keywords": [
+    "microsoft",
+    "word",
+    "react",
+    "react-component"
+  ],
+  "main": "lib/MSWordContainer.js",
+  "unpkg": "umd/MSWordContainer.js",
+  "scripts": {
+    "analyze": "npm run clean && npm run compile && NODE_ENV=production ANALYZE_BUNDLE=1 webpack -p",
+    "build": "npm run clean && npm run compile && NODE_ENV=production webpack -p && npm run build:demo",
+    "build:demo": "NODE_ENV=production webpack -p --config webpack.config.demo.js",
+    "postbuild": "echo 'Ensuring ES5 compatibility...' && uglifyjs umd/MSWordContainer.js > /dev/null && echo 'Yep!'",
+    "clean": "rimraf lib/",
+    "compile": "babel --copy-files -d lib/ src/",
+    "deploy": "npm run build && touch ./demo/dist/.nojekyll && gh-pages -d ./demo/dist",
+    "watch": "webpack --watch",
+    "watch:demo": "webpack --watch --config webpack.config.demo.js",
+    "lint": "prettier --write --no-semi *.js **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Stonelinks/MSWordContainer.git"
+  },
+  "author": "Lucas Doyle <lucas.p.doyle@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "15.6.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
+    "css-loader": "1.0.1",
+    "file-loader": "2.0.0",
+    "prettier": "1.15.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "rimraf": "^2.6.2",
+    "style-loader": "0.23.1",
+    "uglify-js": "^3.4.5",
+    "webpack": "^4.20.2",
+    "webpack-bundle-analyzer": "^3.0.2",
+    "webpack-cli": "^3.1.1"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0 || ^16.0.0"
+  }
+}
