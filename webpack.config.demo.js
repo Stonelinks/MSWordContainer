@@ -15,6 +15,7 @@ const config = {
     path: path.join(__dirname, "demo", "dist", "js"),
     filename: "demo.js",
     publicPath: "/MSWordContainer/js/",
+    // publicPath: "/demo/dist/js/",
     libraryTarget: "umd"
   },
 
@@ -54,7 +55,7 @@ const config = {
   },
 
   plugins: []
-};
+}
 
 if (prod) {
   config.plugins.push(

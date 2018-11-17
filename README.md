@@ -2,9 +2,7 @@
 
 A React Microsoft Word Container
 
-[![npm version](https://img.shields.io/npm/v/MSWordContainer.svg?style=flat-square)](http://browsenpm.org/package/MSWordContainer)
-
-Demo available at https://Stonelinks.github.io/MSWordContainer/
+Demo available at http://stonelinks.org/MSWordContainer/
 
 ---
 

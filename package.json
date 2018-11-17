@@ -1,14 +1,14 @@
 {
   "name": "mswordcontainer",
   "description": "A React Microsoft Word Container",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "keywords": [
     "microsoft",
     "word",
     "react",
     "react-component"
   ],
-  "main": "lib/MSWordContainer.js",
+  "main": "lib/index.js",
   "unpkg": "umd/MSWordContainer.js",
   "scripts": {
     "analyze": "npm run clean && npm run compile && NODE_ENV=production ANALYZE_BUNDLE=1 webpack -p",
@@ -20,7 +20,7 @@
     "deploy": "npm run build && touch ./demo/dist/.nojekyll && gh-pages -d ./demo/dist",
     "watch": "webpack --watch",
     "watch:demo": "webpack --watch --config webpack.config.demo.js",
-    "lint": "prettier --write --no-semi *.js **/*.js"
+    "lint": "prettier --write --no-semi *.js demo/src/*.js **/*.js"
   },
   "repository": {
     "type": "git",
