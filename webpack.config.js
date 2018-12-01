@@ -10,7 +10,7 @@ module.exports = {
   mode: prod ? "production" : "development",
   entry: [path.join(__dirname, "src", "index.js")],
   output: {
-    library: "ReactMarkdown",
+    library: "MSWordContainer",
     libraryTarget: "umd",
     path: path.join(__dirname, "umd"),
     filename: "MSWordContainer.js"
@@ -37,6 +37,10 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"]
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: ["file-loader"]
       }
@@ -50,4 +54,4 @@ module.exports = {
     }),
     process.env.ANALYZE_BUNDLE && new BundleAnalyzerPlugin()
   ].filter(Boolean)
-}
+};

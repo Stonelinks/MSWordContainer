@@ -1,16 +1,66 @@
-const React = require("react")
-const PropTypes = require("prop-types")
+const React = require("react");
+const PropTypes = require("prop-types");
 
-require("./index.css")
+require("./index.less");
+
+function styleInject(css) {
+  if (!css || typeof document === "undefined") return;
+
+  const head = document.head || document.getElementsByTagName("head")[0];
+  const style = document.createElement("style");
+  style.type = "text/css";
+
+  head.appendChild(style);
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  return style;
+}
 
 class MSWordContainer extends React.PureComponent {
+
+  componentWillMount() {
+    this.styleTag = styleInject(`
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  line-height: 1;
+  background: #fff;
+  font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  color: @color_1;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  background: #fff;
+}`);
+  }
+
+  componentWillUnmount() {
+    this.styleTag.remove();
+  }
+  
   render() {
-    const { title, children } = this.props
+    const { title, children } = this.props;
     return (
-      <div className="window-wrapper">
+      <div className="msword-container-root">
         <div className="window">
           <div className="window-border">
-            <div className="title-bar  h-count">
+            <div className="title-bar h-count">
               <div className="control-box">
                 <a className="button-3d minimize">
                   <span>&nbsp;</span>
@@ -28,7 +78,7 @@ class MSWordContainer extends React.PureComponent {
               </span>
             </div>
 
-            <div className="menu-bar  h-count">
+            <div className="menu-bar h-count">
               <a>
                 <span>F</span>
                 ile
@@ -89,7 +139,7 @@ class MSWordContainer extends React.PureComponent {
               <div className="clear" />
             </div>
 
-            <div className="toolbar  float-left">
+            <div className="toolbar float-left">
               <a className="b-style" />
 
               <div className="picker">
@@ -123,7 +173,7 @@ class MSWordContainer extends React.PureComponent {
 
             <div className="content">
               <div className="content-box">
-                <div className="top-ruler  h-count">
+                <div className="top-ruler h-count">
                   <div className="ruler" />
                 </div>
                 <div className="left-ruler" style={{ height: "1492px" }} />
@@ -137,7 +187,7 @@ class MSWordContainer extends React.PureComponent {
               </div>
             </div>
 
-            <div className="status-bar  h-count">
+            <div className="status-bar h-count">
               <div className="status-bar-content">
                 <span className="box">
                   Page 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sec 1
@@ -158,12 +208,12 @@ class MSWordContainer extends React.PureComponent {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 MSWordContainer.propTypes = {
   title: PropTypes.string
-}
+};
 
-module.exports = MSWordContainer
+module.exports = MSWordContainer;
