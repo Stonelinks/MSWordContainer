@@ -14,8 +14,6 @@ const config = {
   output: {
     path: path.join(__dirname, "demo", "dist", "js"),
     filename: "demo.js",
-    publicPath: "/MSWordContainer/js/",
-    // publicPath: "/demo/dist/js/",
     libraryTarget: "umd"
   },
 
@@ -53,7 +51,7 @@ const config = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
+        use: ["base64-inline-loader"]
       }
     ]
   },

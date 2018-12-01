@@ -1,27 +1,26 @@
-const React = require("react");
-const PropTypes = require("prop-types");
+const React = require("react")
+const PropTypes = require("prop-types")
 
-require("./index.less");
+require("./index.less")
 
 function styleInject(css) {
-  if (!css || typeof document === "undefined") return;
+  if (!css || typeof document === "undefined") return
 
-  const head = document.head || document.getElementsByTagName("head")[0];
-  const style = document.createElement("style");
-  style.type = "text/css";
+  const head = document.head || document.getElementsByTagName("head")[0]
+  const style = document.createElement("style")
+  style.type = "text/css"
 
-  head.appendChild(style);
+  head.appendChild(style)
 
   if (style.styleSheet) {
-    style.styleSheet.cssText = css;
+    style.styleSheet.cssText = css
   } else {
-    style.appendChild(document.createTextNode(css));
+    style.appendChild(document.createTextNode(css))
   }
-  return style;
+  return style
 }
 
 class MSWordContainer extends React.PureComponent {
-
   componentWillMount() {
     this.styleTag = styleInject(`
 html {
@@ -47,15 +46,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   background: #fff;
-}`);
+}`)
   }
 
   componentWillUnmount() {
-    this.styleTag.remove();
+    this.styleTag.remove()
   }
-  
+
   render() {
-    const { title, children } = this.props;
+    const { title, children } = this.props
     return (
       <div className="msword-container-root">
         <div className="window">
@@ -208,12 +207,12 @@ body {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 MSWordContainer.propTypes = {
   title: PropTypes.string
-};
+}
 
-module.exports = MSWordContainer;
+module.exports = MSWordContainer

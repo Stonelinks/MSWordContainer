@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
+        use: ["base64-inline-loader"]
       }
     ]
   },
@@ -54,4 +54,4 @@ module.exports = {
     }),
     process.env.ANALYZE_BUNDLE && new BundleAnalyzerPlugin()
   ].filter(Boolean)
-};
+}
