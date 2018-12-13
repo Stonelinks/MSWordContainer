@@ -38,4 +38,4 @@ ReactDOM.render(
 
 ## License
 
-MIT © [Espen Hovlandsdal](https://espen.codes/)
+MIT
