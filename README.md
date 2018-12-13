@@ -19,8 +19,6 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const MSWordContainer = require('mswordcontainer')
 
-const input = '# This is a header\n\nAnd this is a paragraph'
-
 ReactDOM.render(
   <MSWordContainer title={"example.doc"}>
     <p>
