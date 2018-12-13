@@ -24,8 +24,7 @@ const input = '# This is a header\n\nAnd this is a paragraph'
 ReactDOM.render(
   <MSWordContainer title={"example.doc"}>
     <p>
-      Hey there, this is an example of the MSWordContainer in all its
-      circa-2000 glory.
+      Hey there, this is an example of the MSWordContainer in all its glory.
     </p>
   </MSWordContainer>,
   document.getElementById('container')
